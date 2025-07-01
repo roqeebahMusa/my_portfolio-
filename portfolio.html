@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roqeebah Musa - UI/UX Designer Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#6C5B7B',secondary:'#FF6B6B'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+scroll-behavior: smooth;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Clash Display', sans-serif;
+}
+@keyframes float {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-20px); }
+100% { transform: translateY(0px); }
+}
+.particle {
+position: absolute;
+background: rgba(255, 255, 255, 0.05);
+border-radius: 50%;
+pointer-events: none;
+}
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.timeline-item:not(:last-child)::before {
+content: '';
+position: absolute;
+left: 1.25rem;
+top: 2.5rem;
+bottom: -2.5rem;
+width: 2px;
+background-color: #BDC3C7;
+}
+.timeline-dot {
+position: absolute;
+left: 1.25rem;
+top: 1.25rem;
+width: 1rem;
+height: 1rem;
+border-radius: 50%;
+background-color: #6C5B7B;
+transform: translateX(-0.4rem);
+}
+.service-card:hover {
+transform: translateY(-5px);
+}
+.project-card:hover {
+transform: scale(1.02);
+}
+.form-input:focus {
+border-color: #6C5B7B;
+box-shadow: 0 0 0 2px rgba(108, 91, 123, 0.2);
+}
+input[type="checkbox"] {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #BDC3C7;
+border-radius: 4px;
+position: relative;
+}
+input[type="checkbox"]:checked {
+background-color: #6C5B7B;
+border-color: #6C5B7B;
+}
+input[type="checkbox"]:checked::after {
+content: '';
+position: absolute;
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.toggle-checkbox {
+position: absolute;
+opacity: 0;
+height: 0;
+width: 0;
+}
+.toggle-switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.toggle-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #BDC3C7;
+transition: .4s;
+border-radius: 34px;
+}
+.toggle-slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+.toggle-checkbox:checked + .toggle-slider {
+background-color: #6C5B7B;
+}
+.toggle-checkbox:checked + .toggle-slider:before {
+transform: translateX(26px);
+}
+.reveal-text {
+animation: revealText 1.5s ease forwards;
+opacity: 0;
+transform: translateY(20px);
+}
+.reveal-text-delay-1 {
+animation-delay: 0.3s;
+}
+.reveal-text-delay-2 {
+animation-delay: 0.6s;
+}
+@keyframes revealText {
+0% {
+opacity: 0;
+transform: translateY(20px);
+}
+100% {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.filter-button.active {
+background-color: #6C5B7B;
+color: white;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+</style>
+</head>
+<body class="bg-[#F4F4F4] text-[#2C3E50]">
+<!-- Navigation -->
+<header class="fixed w-full top-0 z-50 bg-[#2C3E50] text-white">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<a href="#" class="text-2xl font-['Pacifico'] text-white">RM</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#work" class="hover:text-[#FF6B6B] transition-colors duration-300">Work</a>
+<a href="#about" class="hover:text-[#FF6B6B] transition-colors duration-300">About</a>
+<a href="#services" class="hover:text-[#FF6B6B] transition-colors duration-300">Services</a>
+<a href="#contact" class="hover:text-[#FF6B6B] transition-colors duration-300">Contact</a>
+</nav>
+<div class="flex items-center space-x-4">
+<label class="toggle-switch">
+<input type="checkbox" class="toggle-checkbox" id="themeToggle">
+<span class="toggle-slider"></span>
+</label>
+<button class="md:hidden w-10 h-10 flex items-center justify-center" id="mobileMenuButton">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div class="md:hidden hidden bg-[#2C3E50] w-full" id="mobileMenu">
+<div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+<a href="#work" class="block py-2 hover:text-[#FF6B6B] transition-colors duration-300">Work</a>
+<a href="#about" class="block py-2 hover:text-[#FF6B6B] transition-colors duration-300">About</a>
+<a href="#services" class="block py-2 hover:text-[#FF6B6B] transition-colors duration-300">Services</a>
+<a href="#contact" class="block py-2 hover:text-[#FF6B6B] transition-colors duration-300">Contact</a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center text-white pt-16 bg-[#1A1A2E] overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460] opacity-80"></div>
+<div class="absolute inset-0" id="particles"></div>
+<div class="container relative mx-auto px-4 py-20 w-full">
+<div class="max-w-4xl">
+<div class="overflow-hidden">
+<h1 class="text-5xl md:text-7xl font-bold mb-6 opacity-0 transform translate-y-8" id="heroName">
+Roqeebah Musa
+</h1>
+</div>
+<div class="overflow-hidden">
+<h2 class="text-2xl md:text-3xl font-medium mb-6 text-[#8E9AAF] opacity-0 transform translate-y-8" id="heroTitle">
+Senior UI/UX Designer
+</h2>
+</div>
+<div class="overflow-hidden">
+<p class="text-lg md:text-xl mb-12 max-w-2xl text-gray-300 leading-relaxed opacity-0 transform translate-y-8" id="heroText">
+With over 3 years of experience crafting intuitive digital experiences 
+that bridge user needs with business goals, delivering impactful solutions 
+that drive growth and engagement.
+</p>
+</div>
+<div class="flex flex-wrap gap-6 opacity-0 transform translate-y-8" id="heroButtons">
+<a href="#work" class="group bg-gradient-to-r from-[#FF6B6B] to-[#FF8E8E] hover:from-[#FF8E8E] hover:to-[#FF6B6B] text-white px-8 py-4 !rounded-button font-medium transition-all duration-500 relative overflow-hidden shadow-lg whitespace-nowrap">
+<span class="relative z-10">View My Work</span>
+<div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 opacity-10"></div>
+</a>
+<a href="#contact" class="group border-2 border-white/30 hover:border-white/80 px-8 py-4 !rounded-button font-medium transition-all duration-500 relative overflow-hidden whitespace-nowrap">
+<span class="relative z-10">Let's Connect</span>
+<div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 opacity-10"></div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Work Section -->
+<section id="work" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Featured Work</h2>
+<p class="text-lg text-center mb-12 max-w-2xl mx-auto">
+Explore my selected projects where I've created meaningful user experiences
+across various industries.
+</p>
+<!-- Filter Buttons -->
+<div class="flex flex-wrap justify-center gap-3 mb-12">
+<button class="filter-button active px-4 py-2 !rounded-button border border-[#BDC3C7] hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300 whitespace-nowrap" data-filter="all">
+All Projects
+</button>
+<button class="filter-button px-4 py-2 !rounded-button border border-[#BDC3C7] hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300 whitespace-nowrap" data-filter="fintech">
+FinTech
+</button>
+<button class="filter-button px-4 py-2 !rounded-button border border-[#BDC3C7] hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300 whitespace-nowrap" data-filter="saas">
+SaaS
+</button>
+<button class="filter-button px-4 py-2 !rounded-button border border-[#BDC3C7] hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300 whitespace-nowrap" data-filter="healthcare">
+Healthcare
+</button>
+<button class="filter-button px-4 py-2 !rounded-button border border-[#BDC3C7] hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300 whitespace-nowrap" data-filter="edtech">
+EdTech
+</button>
+</div>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="project-card group bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-category="fintech">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=modern%2520banking%2520app%2520interface%2520design%2520with%2520clean%2520minimal%2520UI%2C%2520financial%2520dashboard%2520with%2520charts%2520and%2520statistics%2C%2520professional%2520fintech%2520application%2520mockup%2520on%2520smartphone%2C%2520dark%2520blue%2520and%2520purple%2520color%2520scheme%2C%2520high-end%2520UI%2520design&width=600&height=400&seq=project1&orientation=landscape"
+alt="FinTech Banking App"
+class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-[#2C3E50] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<!-- <a href="#" class="text-white font-medium hover:underline">View Case Study</a> -->
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-xl font-bold">NexusPay</h3>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">FinTech</span>
+</div>
+<p class="text-sm mb-4">
+Redesigned mobile banking experience that increased user engagement by 43% and improved task completion rates.
+</p>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="project-card group bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-category="healthcare">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=healthcare%2520app%2520interface%2520design%2520with%2520clean%2520minimal%2520UI%2C%2520medical%2520appointment%2520booking%2520system%2C%2520telemedicine%2520platform%2520mockup%2520on%2520smartphone%2C%2520blue%2520and%2520teal%2520color%2520scheme%2C%2520professional%2520healthcare%2520application%2520UI%2520design&width=600&height=400&seq=project2&orientation=landscape"
+alt="Healthcare App"
+class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-[#2C3E50] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<!-- <a href="#" class="text-white font-medium hover:underline">View Case Study</a> -->
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-xl font-bold">MediConnect</h3>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Healthcare</span>
+</div>
+<p class="text-sm mb-4">
+Telemedicine platform that simplified appointment booking and virtual consultations, resulting in 62% higher patient satisfaction.
+</p>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="project-card group bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-category="saas">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=project%2520management%2520dashboard%2520interface%2520design%2520with%2520clean%2520minimal%2520UI%2C%2520task%2520management%2520software%2520with%2520kanban%2520board%2C%2520professional%2520SaaS%2520application%2520mockup%2520on%2520desktop%2C%2520purple%2520and%2520blue%2520color%2520scheme%2C%2520high-end%2520productivity%2520tool%2520UI%2520design&width=600&height=400&seq=project3&orientation=landscape"
+alt="SaaS Project Management"
+class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-[#2C3E50] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<!-- <a href="#" class="text-white font-medium hover:underline">View Case Study</a> -->
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-xl font-bold">TaskFlow</h3>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">SaaS</span>
+</div>
+<p class="text-sm mb-4">
+Project management tool redesign that streamlined workflows and reduced onboarding time by 35% for enterprise teams.
+</p>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="project-card group bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-category="edtech">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=online%2520learning%2520platform%2520interface%2520design%2520with%2520clean%2520minimal%2520UI%2C%2520educational%2520course%2520dashboard%2520with%2520video%2520player%2C%2520professional%2520edtech%2520application%2520mockup%2520on%2520tablet%2C%2520teal%2520and%2520orange%2520color%2520scheme%2C%2520high-end%2520education%2520UI%2520design&width=600&height=400&seq=project4&orientation=landscape"
+alt="EdTech Platform"
+class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-[#2C3E50] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<!-- <a href="#" class="text-white font-medium hover:underline">View Case Study</a> -->
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-xl font-bold">LearnSphere</h3>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">EdTech</span>
+</div>
+<p class="text-sm mb-4">
+E-learning platform that improved course completion rates by 28% through intuitive navigation and gamified learning paths.
+</p>
+</div>
+</div>
+<!-- Project 5 -->
+<div class="project-card group bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-category="fintech">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=investment%2520tracking%2520app%2520interface%2520design%2520with%2520clean%2520minimal%2520UI%2C%2520stock%2520portfolio%2520dashboard%2520with%2520performance%2520charts%2C%2520professional%2520fintech%2520application%2520mockup%2520on%2520smartphone%2C%2520dark%2520blue%2520and%2520green%2520color%2520scheme%2C%2520high-end%2520investment%2520UI%2520design&width=600&height=400&seq=project5&orientation=landscape"
+alt="Investment App"
+class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-[#2C3E50] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<!-- <a href="#" class="text-white font-medium hover:underline">View Case Study</a> -->
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-xl font-bold">WealthTrack</h3>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">FinTech</span>
+</div>
+<p class="text-sm mb-4">
+Investment tracking application that simplified complex financial data, making investing accessible to novice users.
+</p>
+</div>
+</div>
+<!-- Project 6 -->
+<div class="project-card group bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl" data-category="saas">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=customer%2520relationship%2520management%2520dashboard%2520interface%2520design%2520with%2520clean%2520minimal%2520UI%2C%2520CRM%2520software%2520with%2520analytics%2520charts%2C%2520professional%2520SaaS%2520application%2520mockup%2520on%2520desktop%2C%2520purple%2520and%2520teal%2520color%2520scheme%2C%2520high-end%2520business%2520tool%2520UI%2520design&width=600&height=400&seq=project6&orientation=landscape"
+alt="CRM Dashboard"
+class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+<div class="absolute inset-0 bg-gradient-to-t from-[#2C3E50] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+<div class="p-6">
+<!-- <a href="#" class="text-white font-medium hover:underline">View Case Study</a> -->
+</div>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-xl font-bold">ClientPulse</h3>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">SaaS</span>
+</div>
+<p class="text-sm mb-4">
+CRM system redesign that increased sales team productivity by 37% through streamlined workflows and intuitive data visualization.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Timeline Section -->
+<section class="py-20 bg-[#F4F4F4]">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Professional Experience</h2>
+<p class="text-lg text-center mb-12 max-w-2xl mx-auto">
+My career journey in creating exceptional user experiences across different industries.
+</p>
+<div class="max-w-3xl mx-auto">
+<!-- Timeline Item 1 -->
+<div class="timeline-item relative pl-12 pb-12">
+<div class="timeline-dot"></div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+<h3 class="text-xl font-bold">UI/UX Designer</h3>
+<span class="text-sm text-gray-500">2022 - 2023</span>
+</div>
+<h4 class="text-lg font-medium mb-3 text-[#6C5B7B]">Teens Coding Club</h4>
+<p class="mb-4">
+Taught foundational designs to teenagers and also creating engaging learning materials and hands-on-projects and collaborating with cross-functional teams.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">User Research</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Design Systems</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Enterprise UX</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Team Leadership</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="timeline-item relative pl-12 pb-12">
+<div class="timeline-dot"></div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+<h3 class="text-xl font-bold">UI/UX Designer</h3>
+<span class="text-sm text-gray-500">2022 - 2023</span>
+</div>
+<h4 class="text-lg font-medium mb-3 text-[#6C5B7B]">Kiddies Coding Club at Kode10X</h4>
+<p class="mb-4">
+Taught foundational design principles to kids focusing on interactive and engaging learning experiences.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Design System</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Wireframing</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Web Design</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Figma</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="timeline-item relative pl-12">
+<div class="timeline-dot"></div>
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+<h3 class="text-xl font-bold">UI/UX Instructor</h3>
+<span class="text-sm text-gray-500">2023 - 2023</span>
+</div>
+<h4 class="text-lg font-medium mb-3 text-[#6C5B7B]">Creative Rainbow Montessori Schools</h4>
+<p class="mb-4">
+Taught UI/UX design principles to students, focusing on hands-on projects and real-world applications.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Wireframing</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">UI Design</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Figma</span>
+<span class="bg-[#F4F4F4] text-xs px-3 py-1 rounded-full">Design System</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section id="services" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">My Services</h2>
+<p class="text-lg text-center mb-12 max-w-2xl mx-auto">
+Comprehensive design solutions tailored to help your business create exceptional user experiences.
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Service 1 -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mb-6">
+<i class="ri-layout-4-line ri-xl text-[#6C5B7B]"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
+<p class="mb-6 text-sm">
+Creating intuitive, user-centered interfaces that balance aesthetics with functionality
+to deliver exceptional digital experiences.
+</p>
+<!-- <a href="#" class="inline-flex items-center text-[#6C5B7B] font-medium hover:underline">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a> -->
+</div>
+<!-- Service 2 -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mb-6">
+<i class="ri-user-search-line ri-xl text-[#6C5B7B]"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">User Research</h3>
+<p class="mb-6 text-sm">
+Conducting comprehensive user research to understand behaviors, needs, and motivations
+that inform strategic design decisions.
+</p>
+<!-- <a href="#" class="inline-flex items-center text-[#6C5B7B] font-medium hover:underline">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a> -->
+</div>
+<!-- Service 3 -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mb-6">
+<i class="ri-test-tube-line ri-xl text-[#6C5B7B]"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">Usability Testing</h3>
+<p class="mb-6 text-sm">
+Evaluating products with real users to identify usability issues and gather insights
+for continuous improvement.
+</p>
+<!-- <a href="#" class="inline-flex items-center text-[#6C5B7B] font-medium hover:underline">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a> -->
+</div>
+<!-- Service 4 -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mb-6">
+<i class="ri-compasses-2-line ri-xl text-[#6C5B7B]"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">Design Systems</h3>
+<p class="mb-6 text-sm">
+Building scalable design systems that ensure consistency, efficiency, and cohesive
+user experiences across products.
+</p>
+<!-- <a href="#" class="inline-flex items-center text-[#6C5B7B] font-medium hover:underline">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a> -->
+</div>
+<!-- Service 5 -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mb-6">
+<i class="ri-slideshow-line ri-xl text-[#6C5B7B]"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">Interactive Prototyping</h3>
+<p class="mb-6 text-sm">
+Creating high-fidelity interactive prototypes that simulate the final product experience
+for testing and stakeholder approval.
+</p>
+<!-- <a href="#" class="inline-flex items-center text-[#6C5B7B] font-medium hover:underline">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a> -->
+</div>
+<!-- Service 6 -->
+<div class="service-card bg-white p-8 rounded-lg shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mb-6">
+<i class="ri-group-line ri-xl text-[#6C5B7B]"></i>
+</div>
+<h3 class="text-xl font-bold mb-3">UX Consulting</h3>
+<p class="mb-6 text-sm">
+Providing expert guidance on UX strategy, accessibility, and best practices to optimize
+digital products and services.
+</p>
+<!-- <a href="#" class="inline-flex items-center text-[#6C5B7B] font-medium hover:underline">
+Learn More
+<i class="ri-arrow-right-line ml-2"></i>
+</a> -->
+</div>
+</div>
+<div class="mt-16 text-center">
+<a href="#contact" class="bg-[#6C5B7B] hover:bg-opacity-90 text-white px-8 py-3 !rounded-button font-medium transition-all duration-300 inline-block whitespace-nowrap">
+Schedule a Consultation
+</a>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section id="about" class="py-20 bg-[#F4F4F4]">
+<div class="container mx-auto px-4">
+<div class="flex flex-col lg:flex-row gap-12 items-center">
+<div class="lg:w-2/5">
+<img src="./roqeebahmusaimageportrait.jpg"
+alt="Roqeebah Musa"
+class="rounded-lg shadow-lg w-full max-w-md mx-auto object-cover object-top">
+</div>
+<div class="lg:w-3/5">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+<p class="mb-6">
+I'm Roqeebah Musa, a Senior UI/UX Designer with over 3 years of experience creating intuitive digital experiences
+that solve real user problems and drive business growth. My approach combines strategic thinking with creative
+problem-solving to deliver user-centered designs that exceed expectations.
+</p>
+<p class="mb-8">
+With a background in psychology and human-computer interaction, I bring a unique perspective to understanding
+user behavior and designing experiences that feel natural and effortless. I'm passionate about accessibility
+and inclusive design, ensuring that digital products work for everyone.
+</p>
+<h3 class="text-xl font-bold mb-4">Design Philosophy</h3>
+<p class="mb-8">
+I believe that great design is invisible. It should feel so intuitive that users don't even notice it.
+My process is deeply rooted in empathy, research, and iteration, understanding users' needs, testing solutions,
+and continuously improving based on feedback and data.
+</p>
+<h3 class="text-xl font-bold mb-4">Tools & Skills</h3>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>Figma</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>Wireframing</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>Responsive Design</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>Prototyping</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>User Research</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>Usability Testing</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>Information Architecture</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>Design Systems</span>
+</div>
+<div class="flex items-center">
+<i class="ri-check-line text-[#6C5B7B] mr-2"></i>
+<span>HTML/CSS</span>
+</div>
+</div>
+<a href="https://drive.google.com/file/d/1HHz7xj6-wmBg8EDIjScDxZyIEgIwV9tP/view?usp=drivesdk" class="inline-flex items-center bg-[#2C3E50] hover:bg-opacity-90 text-white px-6 py-3 !rounded-button font-medium transition-all duration-300 whitespace-nowrap">
+<i class="ri-download-line mr-2"></i>
+Download Resume
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Let's Connect</h2>
+<p class="text-lg text-center mb-12 max-w-2xl mx-auto">
+Have a project in mind or want to discuss potential collaboration?
+I'd love to hear from you.
+</p>
+<div class="flex flex-col lg:flex-row gap-12">
+<div class="lg:w-1/2">
+<form 
+id="contactForm" 
+class="space-y-6"
+action="https://formsubmit.co/roqeebahmusa19@gmail.com
+"
+method="POST">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label for="name" class="block mb-2 font-medium">Name</label>
+<input type="text" name="name" class="form-input w-full px-4 py-3 border border-[#BDC3C7] rounded focus:outline-none focus:ring-2 focus:ring-[#6C5B7B] focus:border-[#6C5B7B]" required>
+</div>
+<div>
+<label for="email" class="block mb-2 font-medium" required>Email</label>
+<input type="email" name="email" class="form-input w-full px-4 py-3 border border-[#BDC3C7] rounded focus:outline-none focus:ring-2 focus:ring-[#6C5B7B] focus:border-[#6C5B7B]" required>
+</div>
+</div>
+<div>
+<label for="subject" class="block mb-2 font-medium">Subject</label>
+<input type="text" name="subject" class="form-input w-full px-4 py-3 border border-[#BDC3C7] rounded focus:outline-none focus:ring-2 focus:ring-[#6C5B7B] focus:border-[#6C5B7B]" required>
+</div>
+<div>
+<label for="message" class="block mb-2 font-medium" required>Message</label>
+<textarea name="message" rows="5" class="form-input w-full px-4 py-3 border border-[#BDC3C7] rounded focus:outline-none focus:ring-2 focus:ring-[#6C5B7B] focus:border-[#6C5B7B]" required></textarea>
+</div>
+<div class="flex items-start">
+<input type="checkbox" id="consent" class="mr-3 mt-1" required>
+<label for="consent" class="text-sm">
+I agree to the processing of my personal data in accordance with the Privacy Policy.
+</label>
+</div>
+
+<input type="hidden" name="_subject" value="New message from your portfolio!">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="http://127.0.0.1:5500/.">
+
+<button type="submit" class="bg-[#FF6B6B] hover:bg-opacity-90 text-white px-6 py-3 !rounded-button font-medium transition-all duration-300 whitespace-nowrap">
+Send Message
+</button>
+</form>
+</div>
+<div class="lg:w-1/2">
+<div class="bg-[#F4F4F4] p-8 rounded-lg h-full">
+<h3 class="text-xl font-bold mb-6">Contact Information</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4 shrink-0">
+<i class="ri-mail-line text-[#6C5B7B]"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Email</h4>
+<a href="mailto:roqeebahmusa19@gmail.com" class="text-[#6C5B7B] hover:underline">roqeebahmusa19@gmail.com</a>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4 shrink-0">
+<i class="ri-phone-line text-[#6C5B7B]"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Phone</h4>
+<a href="tel:+234 907 359 7639" class="text-[#6C5B7B] hover:underline">+234 907 359 7639</a>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4 shrink-0">
+<i class="ri-map-pin-line text-[#6C5B7B]"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Location</h4>
+<p>Minna, Niger state, Nigeria.</p>
+</div>
+</div>
+</div>
+<h3 class="text-xl font-bold mt-10 mb-6">Follow Me</h3>
+<div class="flex space-x-4">
+<a href="https://www.linkedin.com/in/roqeebah-musa" class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="https://www.facebook.com/profile.php?id=100083470967089" class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300">
+<i class="ri-facebook-fill"></i>
+</a>
+<!-- <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300">
+<i class="ri-behance-fill"></i> -->
+</a>
+<a href="https://www.instagram.com/musaroqeebah" class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#6C5B7B] hover:text-white transition-colors duration-300">
+<i class="ri-instagram-fill"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#2C3E50] text-white py-12">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-center mb-8">
+<a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 md:mb-0">RM</a>
+<div class="flex flex-wrap justify-center gap-6">
+<a href="#work" class="hover:text-[#FF6B6B] transition-colors duration-300">Work</a>
+<a href="#about" class="hover:text-[#FF6B6B] transition-colors duration-300">About</a>
+<a href="#services" class="hover:text-[#FF6B6B] transition-colors duration-300">Services</a>
+<a href="#contact" class="hover:text-[#FF6B6B] transition-colors duration-300">Contact</a>
+</div>
+<a href="https://drive.google.com/file/d/1HHz7xj6-wmBg8EDIjScDxZyIEgIwV9tP/view?usp=drivesdk" class="bg-[#FF6B6B] hover:bg-opacity-90 text-white px-6 py-2 !rounded-button font-medium transition-all duration-300 mt-4 md:mt-0 whitespace-nowrap">
+<i class="ri-download-line mr-2"></i>
+Resume
+</a>
+</div>
+<hr class="border-gray-700 mb-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-sm text-gray-400 mb-4 md:mb-0">
+© 2025 Roqeebah Musa. All rights reserved.
+</p>
+<div class="flex space-x-4">
+<a href="https://www.linkedin.com/in/roqeebah-musa" class="text-gray-400 hover:text-white transition-colors duration-300">
+<i class="ri-linkedin-fill"></i>
+</a>
+<a href="https://www.facebook.com/profile.php?id=100083470967089" class="text-gray-400 hover:text-white transition-colors duration-300">
+<i class="ri-facebook-fill"></i>
+</a>
+<!-- <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+<i class="ri-behance-fill"></i> -->
+</a>
+<a href="https://www.instagram.com/musaroqeebah" class="text-gray-400 hover:text-white transition-colors duration-300">
+<i class="ri-instagram-fill"></i>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bottom-6 right-6 bg-[#6C5B7B] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-opacity-90">
+<i class="ri-arrow-up-line ri-lg"></i>
+</button>
+<!-- Scripts -->
+<script id="mobileMenuScript">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+// Close mobile menu when clicking on a link
+const mobileLinks = mobileMenu.querySelectorAll('a');
+mobileLinks.forEach(link => {
+link.addEventListener('click', function() {
+mobileMenu.classList.add('hidden');
+});
+});
+});
+</script>
+<script id="themeToggleScript">
+document.addEventListener('DOMContentLoaded', function() {
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('change', function() {
+// Theme toggle functionality would go here
+// This is just a placeholder as we're keeping light mode by default
+console.log('Theme toggle clicked');
+});
+});
+</script>
+<script id="projectFilterScript">
+document.addEventListener('DOMContentLoaded', function() {
+const filterButtons = document.querySelectorAll('.filter-button');
+const projectCards = document.querySelectorAll('.project-card');
+filterButtons.forEach(button => {
+button.addEventListener('click', function() {
+const filter = this.getAttribute('data-filter');
+// Update active button
+filterButtons.forEach(btn => btn.classList.remove('active'));
+this.classList.add('active');
+// Filter projects
+projectCards.forEach(card => {
+if (filter === 'all' || card.getAttribute('data-category') === filter) {
+card.style.display = 'block';
+} else {
+card.style.display = 'none';
+}
+});
+});
+});
+});
+</script>
+
+
+<!-- 1st email submit -->
+<!-- <script id="contactFormScript">
+document.addEventListener('DOMContentLoaded', function() {
+const contactForm = document.getElementById('contactForm');
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Form validation and submission logic would go here
+// Submit the fom data manually using  Fetch
+fetch(contactForm.action, {
+    method: 'POST',
+    body: FormData,
+    headers: {
+        'Accept': 'applicaion/json'
+    }
+})
+.then(response => {
+    if (response.ok) {
+        alert('Thank you for your message! I will get back to you soon.');
+        contactForm.reset();
+    } else {
+        response.json().then (data => {
+            console.error('Formspree Error:', data); 
+            alert('Oops! There was a problem submitting your form:' + (data.error || 'Form submission error'));
+        });
+       
+    };
+})
+ .catch(error => {
+    console.error('Fetch Error:', error);
+    alert('There was an error: ' + error.message);
+});
+// .catch(error => {
+//     alert('There was an error: ' + error.message)
+// })
+// alert('Thank you for your message! I will get back to you soon.');
+// contactForm.reset();
+});
+});
+</script> -->
+
+<!-- 2nd email submit -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const contactForm = document.getElementById('contactForm');
+  
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault(); // prevent form from reloading page
+  
+        const formData = new FormData(contactForm);
+  
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            alert('✅ Thank you! Your message was sent.');
+            contactForm.reset();
+          } else {
+            alert('⚠️ Oops! Submission failed. Try again later.');
+          }
+        })
+        .catch(error => {
+          console.error('Form error:', error);
+          alert('❌ Error sending form: ' + error.message);
+        });
+      });
+    });
+  </script>
+
+<script id="backToTopScript">
+document.addEventListener('DOMContentLoaded', function() {
+const backToTopButton = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+if (window.scrollY > 300) {
+backToTopButton.classList.remove('opacity-0', 'invisible');
+backToTopButton.classList.add('opacity-100', 'visible');
+} else {
+backToTopButton.classList.remove('opacity-100', 'visible');
+backToTopButton.classList.add('opacity-0', 'invisible');
+}
+});
+backToTopButton.addEventListener('click', function() {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+});
+</script>
+<script id="heroAnimationScript">
+document.addEventListener('DOMContentLoaded', function() {
+const heroElements = ['heroName', 'heroTitle', 'heroText', 'heroButtons'];
+const particles = document.getElementById('particles');
+// Create particles
+for(let i = 0; i < 50; i++) {
+const particle = document.createElement('div');
+particle.className = 'particle';
+const size = Math.random() * 4 + 2;
+particle.style.width = `${size}px`;
+particle.style.height = `${size}px`;
+particle.style.left = `${Math.random() * 100}%`;
+particle.style.top = `${Math.random() * 100}%`;
+particle.style.animation = `float ${Math.random() * 3 + 2}s infinite ease-in-out`;
+particles.appendChild(particle);
+}
+// Animate hero elements
+heroElements.forEach((id, index) => {
+setTimeout(() => {
+const element = document.getElementById(id);
+if(element) {
+element.style.transition = 'all 1s ease-out';
+element.style.opacity = '1';
+element.style.transform = 'translateY(0)';
+}
+}, index * 200);
+});
+});
+</script>
+<script id="scrollAnimationScript">
+document.addEventListener('DOMContentLoaded', function() {
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80, // Adjust for header height
+behavior: 'smooth'
+});
+}
+});
+});
+});
+</script>
+</body>
+</html>
